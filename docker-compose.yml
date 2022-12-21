@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  django:
+    build: ./django_files
+    container_name: django
+    command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./django_files/:/app/
+    ports:
+      - 8000:8000
+    env_file:
+      - ".env"
+
+  pgdb:
+    image: postgres
+    container_name: pgdb
+    ports:
+      - "5431:5432"
+    env_file:
+      - ".env"
+    volumes:
+      - ${PWD}/mydb/_data/postgres:/var/lib/postgresql/data #'mydb' folder created in base directory with all adding data.
+      # this volume mounted keep all data as backup.
