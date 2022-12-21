@@ -103,6 +103,7 @@ celerybeat.pid
 
 # Environments
 django_files/.env
+.env
 .venv
 env/
 venv/
