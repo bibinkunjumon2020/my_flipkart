@@ -10,4 +10,4 @@ COPY . .
 # install dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt # install all packages
-RUN pip install psycopg2-binary # gave separately because not installed by above call.
+#RUN pip install psycopg2-binary # gave separately because not installed by above call.
