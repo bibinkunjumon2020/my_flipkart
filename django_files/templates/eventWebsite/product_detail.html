@@ -1,0 +1,33 @@
+{% extends 'eventWebsite/base.html' %}
+{% block content %}
+{%load static%}
+<!-- Post detail are shown as an image top card -->
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="card mb-5">
+                {%if product.pic%}
+                <img src={{product.pic.url}} class="card-img-top" alt="..." width="150" height="150">
+                {% endif %}
+                <div class="card-body">
+                    <h1 class="card-title">{{product.title}}</h1>
+                    <h5 class="card-title">Event Date :</h5>
+                    <p class="card-title">{{product.description}}</p>
+                    <h5 class="card-title">Event Venue :</h5>
+                    <p class="card-title">{{product.color}}</p>
+                    <p class="card-title">{{product.availability}}</p>
+                    <p style="color:blue">Event :</p>
+                    <p class="card-text">{{product.category}}</p>
+                    <p class="card-text"><small class="text-muted">Posted date : {{product.price}}</small></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <button class="btn btn-danger" onclick="history.back()"> Back
+                <i class="fa-solid fa-angle-right"> </i></button>
+        </div>
+    </div>
+</div>
+{%endblock%}

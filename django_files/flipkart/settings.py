@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'users',
     'customer',
     'company',
+    'products',
 
 ]
 AUTH_USER_MODEL = 'users.MyUsers'
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'flipkart.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['templates', 'templates/eventWebiste'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,0 +1,115 @@
+{% extends 'eventWebsite/base.html' %}
+
+{% block content %}
+<div style="background-color:#F1F1F1">
+
+
+    <div class="container" style="padding:90px;">
+
+        <div class="row">
+            <div class="card ms-5 ">
+                {% for sell in seller%}
+                <div class="card-header">
+                    <h5 align="center" style="background-color:rgb(255, 99, 71);">Seller Basic Info</h5>
+                    <div class="card-body mt-5 mb-5">
+                    <a href="{%url 'product_list' %}" class="card-link btn btn-danger">List Product</a>
+                </div>
+                </div>
+                {% if sell.profile_logo %}
+                <img src={{sell.profile_logo.url}} class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-header">
+                    <h5> Seller Name :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.seller_name}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Seller Registration ID :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.seller_reg}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Email ID :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.email}}</li>
+                </ul>
+
+                <div class="card-header">
+                    <h5> Phone Number :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.phone_number}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Founded :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.founded}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5 align="center" style="background-color:rgb(255, 99, 71);">Address</h5>
+                </div>
+
+                <div class="card-header">
+                    <h5> Building Name :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.building_name}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Lane -1 :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.lane1}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Lane -2 :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.lane2}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Place :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.place}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Pin Code :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.pin}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Country:</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.country}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> State :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.state}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5>District :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{sell.district}}</li>
+                </ul>
+                {% endfor%}
+
+                <div class="card-body mt-5 mb-5">
+                    <a href="{%url 'login' %}" class="card-link btn btn-danger">Back</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

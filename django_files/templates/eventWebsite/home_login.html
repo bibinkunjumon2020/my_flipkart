@@ -1,0 +1,36 @@
+{% extends 'eventWebsite/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<!-- Form displays the fields for registration and a Signup Button -->
+<div class="row m-5">
+    <h1 align="center">Sign In</h1>
+</div>
+<div class="row m-5">
+    <div class="col-2"></div>
+    <div class="col-4 "> <!-- Buyer Code -->
+        <div class="card " style="width: 18rem;">
+            <img src="{% static 'img.png'%}" class="card-img-top" alt="..." width="100" height="200">
+            <div class="card-body ">
+                <h5 class="card-title text-success">Buyer</h5>
+                <p class="card-text">Purchase any of the listed products. </p>
+                <a href="{% url 'buyer_login' %}" class="btn btn-primary">I am a Buyer</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-4 "> <!-- Seller Code -->
+        <div class="card " style="width: 18rem;">
+            <img src="{% static 'img_1.png' %}" class="card-img-top" alt="..."  width="100" height="200">
+            <div class="card-body">
+                <h5 class="card-title text-danger">Seller</h5>
+                <p class="card-text">Here you are a varified responsible seller. </p>
+                <a href="{% url 'seller_login' %}" class="btn btn-primary">I am a Seller</a>
+            </div>
+        </div>
+    </div>
+        <div class="col-2"></div>
+
+</div>
+    {% endblock %}

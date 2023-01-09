@@ -1,0 +1,112 @@
+{% extends 'eventWebsite/base.html' %}
+
+{% block content %}
+<div style="background-color:#F1F1F1">
+
+
+    <div class="container" style="padding:90px;">
+
+        <div class="row">
+            <div class="card ms-5 ">
+                {% for buy in buyer%}
+                <div class="card-header">
+                    <h5 align="center" style="background-color:rgb(255, 99, 71);"> Buyer Basic Info</h5>
+                </div>
+                {% if buy.profile_logo %}
+               <img src={{buy.profile_logo.url}} class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-header">
+                    <h5> Name :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.first_name}} {{buy.last_name}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Email ID :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.email}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Phone Number :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.phone_number}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Date Of Birth :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.dob}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5>Sex : </h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.sex}}</li>
+                </ul>
+
+                <div class="card-header">
+                    <h5 align="center" style="background-color:rgb(255, 99, 71);">Address</h5>
+                </div>
+
+                <div class="card-header">
+                    <h5> Building Name :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.building_name}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Lane -1 :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.lane1}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Lane -2 :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.lane2}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Place :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.place}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Pin Code :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.pin}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> Country:</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.country}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5> State :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.state}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5>District :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{buy.district}}</li>
+                </ul>
+                {% endfor%}
+
+                <div class="card-body mt-5 mb-5">
+                    <a href="{%url 'login' %}" class="card-link btn btn-danger">Back</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from django.views.generic import View
+from django.views.generic import View,TemplateView
 from .forms import RegistrationForm, LoginForm
 from users.models import MyUsers
 
@@ -31,7 +31,7 @@ class RegistrationView(View): # Customer SignUp
             user.role = MyUsers.buyer
             user.save()
             print("Registration Success",user)
-            return redirect('login')  # Success redirected to Log-in View
+            return redirect('buyer_login')  # Success redirected to Log-in View
         else:
             print("#######Form Error")
             return render(request, "eventWebsite/registration.html", context={"form": form})
@@ -62,7 +62,7 @@ class LogInView(View):
                 print("Authenticated Successfully")
                 login(request, user)
                 print("Login Success")
-                # return redirect('post_list')
+                return redirect('buyer_profile')
             else:
                 print("Failed ..No such User")
                 return redirect("register")
@@ -77,3 +77,11 @@ class LogOutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)  # inbuilt func
         return redirect("home")
+
+class BuyerProfile(View):
+    def get(self,request):
+        print("@@@@@@@@@@",request.user,request.user.email,request.user.phone_number)
+        buyer = MyUsers.objects.filter(email=self.request.user.email)
+        # for buy in buyer:
+        #    print("///////",buy.first_name)
+        return render(request, "eventWebsite/buyer-profile.html", context={"buyer": buyer})

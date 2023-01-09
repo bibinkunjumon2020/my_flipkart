@@ -1,0 +1,61 @@
+{% extends 'eventWebsite/base.html' %}
+{% block content %}
+{% load static %}
+<!-- Adding posts template -->
+<div class="container mb-5">
+    <div class="row mt-5">
+        <div class="col-2">
+            <a class="btn btn-primary" href="{% url 'product_add' %}" role="button">Add New Product</a>
+        </div>
+        <div class="col-8">
+        </div>
+        <div class="col-2"></div>
+    </div>
+    <div class="row">
+
+        <div class="col-12 mb-5 mt-5">
+            <h3>Your List of Products :</h3>
+            {%if products %}
+            <table class="table mt-5">
+                <tr>
+                    <th>Product Title</th>
+                    <th>Description</th>
+                    <th>Color</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Availability</th>
+                    <th width="15%">Product LOGO</th>
+                </tr>
+                {%for product in products %}
+                <tr>
+                    <td>{{product.title}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.color}}</td>
+                    <td>{{product.category}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.availability}}</td>
+
+                    <td>
+                        {%if product.pic%}
+                        <img src={{product.pic.url}} class="card-img-top" alt="..." width="150" height="150">
+                        {% endif %}
+                    </td>
+                    <!-- 3 buttons for specific functions -->
+
+                    <td>
+                        <a href="{% url 'product_update' product.id %}" class="btn btn-warning ">Edit</a><br>
+                        <a href="{% url 'product_detail' product.id %}" class="btn btn-info mt-3">Detail</a><br>
+                        <a href="{% url 'product_delete' product.id %}" class="btn btn-danger mt-3">Delete</a><br>
+                    </td>
+                </tr>
+                {%endfor%}
+            </table>
+            {%else%}
+            <h2 class="text-danger">No selling products</h2>
+            {%endif%}
+
+        </div>
+
+    </div>
+</div>
+{%endblock%}

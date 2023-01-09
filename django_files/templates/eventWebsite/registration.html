@@ -13,17 +13,17 @@
         <!-- Just a data display in page -->
 
         <div class="col-sm-5" style="margin-top:15%;">
-            <h3>Customer SignUp</h3>
-            <h3 style="color:#6c8eff">Take your event to the dream level !</h3>
+            <h3> SignUp </h3>
+            <h3 style="color:#6c8eff">Join Indias No1 Online Market</h3>
             <img class="img-fluid" src="{% static 'home/images/can-reg.png' %}" alt="" width="600px">
         </div>
         <div class="col-sm-4 mt-5 ">
             <div class="card mt-5 mb-4 border">
                 <div class="card-body">
                     <div class="mt-4">
-                        <img src="{%static 'avatar.png' %}" class="rounded mx-auto d-block" width="150" height="150"
+                        <img src="{%static 'avatar_1.png' %}" class="rounded mx-auto d-block" width="150" height="150"
                              alt="...">
-                        <h4 align="center">Customer Sign Up</h4>
+                        <h4 align="center"> Sign Up Form </h4>
                         <hr>
                     </div>
 
@@ -32,10 +32,10 @@
                         {{form.as_p}}
                         <div class=" mb-2 mt-3   ">
                             <button type="submit" class="btn btn-success  form-control">Register</button>
-                            <p class="mt-4 ms-auto">Already have an Account? <a href="#">Login</a></p>
-
                         </div>
                     </form>
+                    <p class="mt-4 ms-auto">Already have an Account? <a href="{% url 'login' %}">Login</a></p>
+
                 </div>
             </div>
 
