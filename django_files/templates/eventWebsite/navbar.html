@@ -21,7 +21,19 @@
                     </button>
                     <button class="btn btn-warning ms-5" type="button"
                             onclick="location.href='{% url 'register' %}'">Register
+
+                        {%if user.role == 2%}
+                        <button class="btn btn-warning ms-5" type="button"
+                                onclick="location.href='{% url 'buyer_profile' %}'">Profile
+                        </button>
+                        <button class="btn btn-warning ms-5" type="button"
+                                onclick="location.href='{% url 'buyer_dashboard' %}'">Dashboard
+                        </button>
                     </button>
+                    <button class="btn btn-warning ms-5" type="button"
+                            onclick="location.href='{% url 'logout' %}'">Sign Out
+                    </button>
+                    {% endif %}
                 </form>
             </div>
         </div>

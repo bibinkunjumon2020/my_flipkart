@@ -46,55 +46,16 @@
     </div>
 
     <!-- Carousal END -->
+    <!-- new arrivals -->
 
     <div class="row pt-5">
-        <!-- new arrivals -->
         <div class="recentjobs container bg-white ">
             <h4 class="text-center">New Arrivals</h4>
-            <hr>
-            <div class=" row d-flex justify-content-center">
 
-                <div class="div col-9 mt-2 mb-2"><!-- post card start-->
-                    {% if posts %}
-                    {% for post in posts %}
-                    <div class="card job-card mb-3">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-2 col-md-6">
-                                    <a href=""> <img class="mt-2 " width="100"
-                                                     src={{post.pic.url}} alt=""> </a>
-                                </div>
-
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="card-left mt-2">
-                                        <h5>{{post.event_title}} </h5>
-                                        <p><i class="fa-solid fa-location-dot"></i>{{post.location}} </p>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-md-6 ">
-
-                                    <div class=" right-details mt-6">
-                                        <p><i class="fa-regular fa-clock"></i> {{post.event_date}} </p>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-3 col-md-3 ">
-                                    <button class="btn btn-warning"
-                                            onclick="window.location.href='{% url 'post_detail' post.id %}'"> View
-                                        Details <i class="fa-solid fa-angle-right"> </i></button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div><!-- post card end-->
-                    {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
         </div>
-        <!-- recently posted end -->
     </div>
+    <!-- new arrivals -->
+
     <!-- Grid Card view of products -->
     {% if products %}
     <div class="row row-cols-1 row-cols-md-4 g-4  ">
@@ -115,9 +76,9 @@
         {% endfor %}
     </div>
     {% endif %}
-</div>
+    <!-- Grid Card view of products END -->
 
-<!-- Grid Card view of products END -->
+</div>
 
 
 {% endblock %}

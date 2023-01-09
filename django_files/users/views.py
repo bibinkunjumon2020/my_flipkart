@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
+from django.shortcuts import render,redirect
+from django.views.generic import TemplateView, ListView,View
 from products.models import Products
+from django.contrib.auth import login, logout, authenticate
 
 class HomeView(TemplateView):
     template_name = "eventWebsite/home.html"
@@ -27,3 +28,11 @@ class ListAllProductsView(ListView):
         this specific query is used to run this View
         """
         return Products.objects.all()
+
+class LogOutView(View):
+    """User logout class """
+
+    def get(self, request, *args, **kwargs):
+        logout(request)  # inbuilt func
+        return redirect("home")
+
