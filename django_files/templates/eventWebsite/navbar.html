@@ -16,21 +16,34 @@
                 <a class="nav-link active me-3 ms-3" href="#">Customer Care</a>
                 <a class="nav-link active me-3 ms-3" href="#">About Us</a>
                 <form class="container-fluid justify-content-start">
-                    <button class="btn btn-warning ms-5" type="button"
+                    {% if not user.is_authenticated%}
+                    <button class="btn btn-success ms-5" type="button"
                             onclick="location.href='{% url 'login' %}'"> Sign In
                     </button>
                     <button class="btn btn-warning ms-5" type="button"
                             onclick="location.href='{% url 'register' %}'">Register
-
-                        {%if user.role == 2%}
-                        <button class="btn btn-warning ms-5" type="button"
-                                onclick="location.href='{% url 'buyer_profile' %}'">Profile
-                        </button>
-                        <button class="btn btn-warning ms-5" type="button"
-                                onclick="location.href='{% url 'buyer_dashboard' %}'">Dashboard
-                        </button>
                     </button>
-                    <button class="btn btn-warning ms-5" type="button"
+                    {% endif %}
+                    {%if user.role == 2%}
+                    <button class="btn btn-dark ms-5" type="button"
+                            onclick="location.href='{% url 'buyer_profile' %}'">Profile
+                    </button>
+                    <button class="btn btn-primary ms-5" type="button"
+                            onclick="location.href='{% url 'buyer_dashboard' %}'">Dashboard
+                    </button>
+
+                    <button class="btn btn-danger ms-5" type="button"
+                            onclick="location.href='{% url 'logout' %}'">Sign Out
+                    </button>
+                    {% elif user.role == 1 %}
+                    <button class="btn btn-dark ms-5" type="button"
+                            onclick="location.href='{% url 'seller_profile' %}'">Profile
+                    </button>
+                    <button class="btn btn-primary ms-5" type="button"
+                            onclick="location.href='{% url 'product_list' %}'">Dashboard
+                    </button>
+
+                    <button class="btn btn-danger ms-5" type="button"
                             onclick="location.href='{% url 'logout' %}'">Sign Out
                     </button>
                     {% endif %}

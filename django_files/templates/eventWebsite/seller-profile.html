@@ -11,9 +11,6 @@
                 {% for sell in seller%}
                 <div class="card-header">
                     <h5 align="center" style="background-color:rgb(255, 99, 71);">Seller Basic Info</h5>
-                    <div class="card-body mt-5 mb-5">
-                    <a href="{%url 'product_list' %}" class="card-link btn btn-danger">List Product</a>
-                </div>
                 </div>
                 {% if sell.profile_logo %}
                 <img src={{sell.profile_logo.url}} class="card-img-top" alt="...">
@@ -104,7 +101,7 @@
                 {% endfor%}
 
                 <div class="card-body mt-5 mb-5">
-                    <a href="{%url 'login' %}" class="card-link btn btn-danger">Back</a>
+                    <a href="{%url 'product_list' %}" class="card-link btn btn-danger">Back</a>
                 </div>
             </div>
         </div>

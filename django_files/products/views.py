@@ -40,7 +40,7 @@ class ProductUpdateView(UpdateView):
         return super().form_valid(form)  # It helps to load existing value to the form
 
 
-class ListProductView(ListView):  # list products by that seller
+class ListProductView(ListView):  # list products by that seller # Seller Dashboard
     """
     ListView used to list of posts with form given data,depends on model
     """

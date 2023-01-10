@@ -26,12 +26,11 @@ urlpatterns = [
     path('seller_register', company_view.RegistrationView.as_view(), name='seller_register'),
     path('seller_login', company_view.LogInView.as_view(), name='seller_login'),
     path('seller_profile', company_view.SellerProfile.as_view(), name='seller_profile'),
-   # path('seller_dashboard', customer_view.DashboardBuyer.as_view(), name='seller_dashboard'),
+    path('product_list/', products_view.ListProductView.as_view(), name='product_list'), # Seller Dashboard
 
     # Products
     path('product_add/', products_view.ProductCreateView.as_view(), name='product_add'),
     path('product_update/<int:pk>', products_view.ProductUpdateView.as_view(), name='product_update'),
-    path('product_list/', products_view.ListProductView.as_view(), name='product_list'),
     path('product_detail/<int:pk>', products_view.ProductDetailView.as_view(), name='product_detail'),
     path('product_delete/<int:pk>', products_view.delete_product, name='product_delete'),
 

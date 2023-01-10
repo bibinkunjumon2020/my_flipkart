@@ -3,6 +3,7 @@
 {% load static %}
 <!-- Adding posts template -->
 <div class="container mb-5">
+    <h2 align="center">Seller Dashboard</h2>
     <div class="row mt-5">
         <div class="col-2">
             <a class="btn btn-primary" href="{% url 'product_add' %}" role="button">Add New Product</a>
@@ -12,7 +13,6 @@
         <div class="col-2"></div>
     </div>
     <div class="row">
-
         <div class="col-12 mb-5 mt-5">
             <h3>Your List of Products :</h3>
             {%if products %}

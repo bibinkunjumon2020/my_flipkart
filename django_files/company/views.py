@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
-from django.views.generic import View
+from django.views.generic import View,ListView
 from .forms import RegistrationForm, LoginForm
 from users.models import MyUsers
+from products.models import Products
 class RegistrationView(View): # Customer SignUp
     """ Method for accepting user credentials and creating a User
         Django inbuilt User Model is used.
@@ -60,7 +61,7 @@ class LogInView(View):
                 print("Authenticated Successfully")
                 login(request, user)
                 print("Login Success")
-                return redirect('seller_profile')
+                return redirect('product_list')
             else:
                 print("Failed ..No such User")
                 return redirect("register")
@@ -81,5 +82,4 @@ class SellerProfile(View):  # View the profile of seller from registration
         # print("@@@@@@@@@@",request.user,request.user.email,request.user.phone_number)
         seller = MyUsers.objects.filter(email=self.request.user.email)
         return render(request, "eventWebsite/seller-profile.html", context={"seller": seller})
-
 
