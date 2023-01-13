@@ -8,9 +8,9 @@
             <h2>Add Product</h2>
             <form action="" class="mt-5" method="post" enctype="multipart/form-data">
                 <table>
-               {%csrf_token%}     <!-- Form Fields rendered as a table-->
-                {{form.as_table}}
-                     </table>
+                    {%csrf_token%}     <!-- Form Fields rendered as a table-->
+                    {{form.as_table}}
+                </table>
                 <div class="mb-5 mt-5">
                     <button type="submit" class="btn btn-success">Submit</button>
                 </div>
@@ -18,7 +18,7 @@
             </form>
         </div>
         <div class="col-3">
-             <a class="btn btn-danger" href="{% url 'product_list' %}" role="button">Go Back</a>
+            <a class="btn btn-danger" href="{% url 'product_list' %}" role="button">Go Back</a>
         </div>
     </div>
 </div>

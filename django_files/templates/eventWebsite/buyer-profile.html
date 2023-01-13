@@ -9,11 +9,11 @@
         <div class="row">
             <div class="card ms-5 ">
                 {% for buy in buyer%}
-                <div class="card-header">
+                <div class="card-header" >
                     <h5 align="center" style="background-color:rgb(255, 99, 71);"> Buyer Basic Info</h5>
                 </div>
                 {% if buy.profile_logo %}
-               <img src={{buy.profile_logo.url}} class="card-img-top" alt="...">
+               <img src={{buy.profile_logo.url}} class="card-img-top" style="width: 25rem;height:30rem" alt="..." >
                 {% endif %}
                 <div class="card-header">
                     <h5> Name :</h5>

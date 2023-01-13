@@ -24,7 +24,7 @@
                             onclick="location.href='{% url 'register' %}'">Register
                     </button>
                     {% endif %}
-                    {%if user.role == 2%}
+                    {%if user.role == 2%}  <!-- Buyer-->
                     <button class="btn btn-dark ms-5" type="button"
                             onclick="location.href='{% url 'buyer_profile' %}'">Profile
                     </button>
@@ -35,7 +35,10 @@
                     <button class="btn btn-danger ms-5" type="button"
                             onclick="location.href='{% url 'logout' %}'">Sign Out
                     </button>
-                    {% elif user.role == 1 %}
+                    <button class="btn btn-info ms-5" type="button"
+                            onclick="location.href='{% url 'cart' %}'">Cart
+                    </button>
+                    {% elif user.role == 1 %} <!-- Seller-->
                     <button class="btn btn-dark ms-5" type="button"
                             onclick="location.href='{% url 'seller_profile' %}'">Profile
                     </button>

@@ -3,7 +3,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.views.generic import View, TemplateView, ListView
 from .forms import RegistrationForm, LoginForm
 from users.models import MyUsers
-from products.models import Products
+from products.models import Products, Cart
+from django.http import HttpResponse
 
 
 class RegistrationView(View):  # Customer SignUp
@@ -25,7 +26,7 @@ class RegistrationView(View):  # Customer SignUp
         """
         print("######### Form Enter")
 
-        form = RegistrationForm(request.POST)
+        form = RegistrationForm(request.POST, request.FILES)
         if form.is_valid():
             print("######### Form Valid")
             password = form.cleaned_data.get('password')
@@ -66,7 +67,7 @@ class LogInView(View):
                 login(request, user)
                 print("Login Success")
                 return redirect('buyer_dashboard')
-                #return redirect('buyer_profile')
+                # return redirect('buyer_profile')
             else:
                 print("Failed ..No such User")
                 return redirect("register")
@@ -75,7 +76,6 @@ class LogInView(View):
             return render(request, "eventWebsite/login.html", context={"form": form})
 
         return render(request, "eventWebsite/login.html", {"form": form})
-
 
 
 class BuyerProfile(View):
@@ -100,3 +100,11 @@ class DashboardBuyer(ListView):
         this specific query is used to run this View
         """
         return Products.objects.all()
+
+    def post(self, *args, **kwargs):
+        btn_add_cart = self.request.POST.get('btn_add_cart')
+        if btn_add_cart == "add_cart":
+            print("&&&& How to add cart")
+            Cart.objects.create()
+        return redirect("cart")
+    # return HttpResponse(status=200)

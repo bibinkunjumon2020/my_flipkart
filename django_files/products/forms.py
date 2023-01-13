@@ -26,4 +26,4 @@ class ProductsForm(forms.ModelForm):
                                         attrs={"class": "form-control", 'placeholder': 'price'}))
     class Meta:
         model = Products
-        fields = ['title','description','color','category','price','availability']
+        fields = ['product_pic','title','description','color','price','category','availability']

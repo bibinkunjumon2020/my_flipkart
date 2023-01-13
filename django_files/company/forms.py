@@ -1,7 +1,8 @@
 from django import forms
 from users.models import MyUsers
 
- # buyer Form
+
+# buyer Form
 class LoginForm(forms.Form):
     """
     2 Fields for log in.No connection with any model.
@@ -12,50 +13,54 @@ class LoginForm(forms.Form):
     password = forms.CharField(required=True,
                                widget=forms.PasswordInput(attrs={"class": "form-control", 'placeholder': ' Password'}))
 
+
 class DateInput(forms.DateInput):
     input_type = 'date'
+
 
 class RegistrationForm(forms.ModelForm):
     """
     For accessing the inbuilt User model
     """
+    # email = forms.EmailField(required=True, label="Enter Your Email Address",
+    #                          widget=forms.EmailInput(attrs={"class": "form-control",'placeholder': 'Valid Email'}))
     seller_name = forms.CharField(required=True, label="Seller Identifying Name ",
-                         widget=forms.TextInput(attrs={"class": "form-control", 'placeholder': 'seller'}))
+                                  widget=forms.TextInput(attrs={"class": "form-control", 'placeholder': 'seller'}))
     seller_reg = forms.CharField(required=True, label="Seller Registration Number/GST",
-                         widget=forms.TextInput(attrs={"class": "form-control", 'placeholder': 'GST/TIN Number'}))
+                                 widget=forms.TextInput(
+                                     attrs={"class": "form-control", 'placeholder': 'GST/TIN Number'}))
 
-    email = forms.EmailField(required=True, label="Enter Your Email Address",
-                             widget=forms.EmailInput(attrs={"class": "form-control",'placeholder': 'Valid Email'}))
-
-
-# Address Data
+    # Address Data
     building_name = forms.CharField(required=True, label="House / Office Name & Number ",
-                         widget=forms.TextInput(attrs={"class": "form-control", 'placeholder': 'house/office name'}))
+                                    widget=forms.TextInput(
+                                        attrs={"class": "form-control", 'placeholder': 'house/office name'}))
 
     lane1 = forms.CharField(required=True, label="Address Lane 1 ",
-                                    widget=forms.TextInput(
-                                        attrs={"class": "form-control", 'placeholder': 'street'}))
+                            widget=forms.TextInput(
+                                attrs={"class": "form-control", 'placeholder': 'street'}))
     lane2 = forms.CharField(required=True, label="Address Lane 2 ",
-                                    widget=forms.TextInput(
-                                        attrs={"class": "form-control", 'placeholder': 'street'}))
+                            widget=forms.TextInput(
+                                attrs={"class": "form-control", 'placeholder': 'street'}))
     state = forms.CharField(required=True, label="State",
-                                    widget=forms.TextInput(
-                                        attrs={"class": "form-control", 'placeholder': 'state'}))
+                            widget=forms.TextInput(
+                                attrs={"class": "form-control", 'placeholder': 'state'}))
     district = forms.CharField(required=True, label="District",
-                                    widget=forms.TextInput(
-                                        attrs={"class": "form-control", 'placeholder': 'district'}))
+                               widget=forms.TextInput(
+                                   attrs={"class": "form-control", 'placeholder': 'district'}))
     place = forms.CharField(required=True, label="Locality",
-                                    widget=forms.TextInput(
-                                        attrs={"class": "form-control", 'placeholder': 'place/landmark'}))
+                            widget=forms.TextInput(
+                                attrs={"class": "form-control", 'placeholder': 'place/landmark'}))
     pin = forms.CharField(required=True, label="Pincode",
-                                    widget=forms.NumberInput(
-                                        attrs={"class": "form-control", 'placeholder': '******'}))
+                          widget=forms.NumberInput(
+                              attrs={"class": "form-control", 'placeholder': '******'}))
+
     class Meta:
         model = MyUsers
-        fields = ['email','seller_name','seller_reg', 'password','founded','phone_number','building_name','lane1','lane2',
-                  'state','district','place','country','pin','profile_logo']
+        fields = ['email', 'password', 'seller_name', 'profile_logo', 'phone_number', 'seller_reg', 'founded',
+                  'building_name', 'lane1','lane2', 'state', 'district','country', 'place', 'pin']
 
         widgets = {
+            "email": forms.EmailInput(attrs={"class": "form-control", 'placeholder': 'valid email'}),
             # "seller_name": forms.TextInput(
             #     attrs={"class": "form-control", 'placeholder': 'seller entity ', 'pattern': '[A-Z a-z]+',
             #            'title': 'Enter Characters Only '}),
@@ -63,7 +68,7 @@ class RegistrationForm(forms.ModelForm):
             #     attrs={"class": "form-control", 'placeholder': 'seller registration', 'pattern': '[A-Z a-z]+',
             #            'title': 'Enter Characters Only '}),
             "password": forms.PasswordInput(attrs={"class": "form-control", 'placeholder': 'create password'}),
-            "phone_number":forms.NumberInput(
+            "phone_number": forms.NumberInput(
                 attrs={"class": "form-control", 'placeholder': 'Phone number', 'pattern': '[0-9]',
                        'title': 'Enter Numbers Only '}),
             "founded": forms.DateInput(attrs={'type': 'date', }),

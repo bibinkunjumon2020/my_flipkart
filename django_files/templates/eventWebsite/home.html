@@ -63,13 +63,13 @@
         <div class="col">
             <div class="card h-100">
                 {% if product.product_pic%}
-                <img src="{{product.product_pic.url}}" class="card-img-top" alt="...">
+                <img src="{{product.product_pic.url}}" class="card-img-top" alt="..." style="height:15em">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{product.title}}</h5>
                     <p class="card-text">{{product.description}}</p>
                     <p class="card-text">{{product.price}} Rs</p>
-                    <p class="card-text">Seller:{{product.seller}}</p>
+                    <p class="card-text">Seller:{{product.seller.seller_name}}</p>
                 </div>
             </div>
         </div>

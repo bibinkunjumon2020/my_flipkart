@@ -44,34 +44,37 @@ class MyUsers(AbstractBaseUser):
         (buyer, 'buyer'),
     )
     sex_choices = (
-        ("male", "male"),
-        ('female', 'female'),
+        ("Male", "male"),
+        ('Female', 'female'),
         ('Not Say', 'Not Say'),
     )
     # basic
     email = models.EmailField(max_length=100, unique=True)
-    phone_number = models.CharField(max_length=20, blank=True)
-    role = models.PositiveSmallIntegerField(choices=role_choices, blank=True, null=True)
+    phone_number = models.CharField(max_length=20,null=True,blank=True)
+    role = models.PositiveSmallIntegerField(choices=role_choices)
     password = models.CharField(max_length=300)
     profile_logo = models.ImageField(
-        upload_to="customer_image",
-        validators=[FileExtensionValidator(allowed_extensions=["jpg", "png", "jpeg"])],
-        null=True, blank=True
-    )
+        upload_to="buyer_image",
+        validators=[FileExtensionValidator(allowed_extensions=["jpg", "png", "jpeg"])],null=True,blank=True)
+
     # address both buyer and seller
-    building_name = models.CharField(max_length=500, null=True)
-    lane1 = models.CharField(max_length=500, null=True)
-    lane2 = models.CharField(max_length=500, null=True)
-    state = models.CharField(max_length=200, null=True)
-    district = models.CharField(max_length=200, null=True)
-    country = models.CharField(max_length=200, null=True)
-    place = models.CharField(max_length=200, null=True)
-    pin = models.PositiveIntegerField(null=True)
+    building_name = models.CharField(max_length=500,null=True,blank=True)
+    lane1 = models.CharField(max_length=500,null=True,blank=True )
+    lane2 = models.CharField(max_length=500,null=True,blank=True )
+    state = models.CharField(max_length=200,null=True,blank=True )
+    district = models.CharField(max_length=200,null=True,blank=True )
+    country = models.CharField(max_length=200,null=True,blank=True)
+    place = models.CharField(max_length=200,null=True,blank=True )
+    pin = models.PositiveIntegerField(null=True,blank=True)
+
+    # auto add fields
 
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now_add=True)
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now_add=True)
+
+    # admin user stuff
 
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
@@ -79,17 +82,20 @@ class MyUsers(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
 
     # seller
+
     seller_name = models.CharField(max_length=150, blank=True, null=True)
     seller_reg = models.CharField(max_length=500, blank=True, null=True)
     founded = models.DateField(blank=True, null=True)
+
     # buyer
+
     dob = models.DateField(null=True, blank=True)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    sex = models.CharField(choices=sex_choices, max_length=50, default="Not Say")
+    first_name = models.CharField(max_length=50,null=True,blank=True)
+    last_name = models.CharField(max_length=50,null=True,blank=True)
+    sex = models.CharField(choices=sex_choices, max_length=50,null=True,blank=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone_number', 'role']
+    REQUIRED_FIELDS = []
 
     objects = MyUserManager()
 
@@ -103,7 +109,7 @@ class MyUsers(AbstractBaseUser):
         return f'{self.first_name} {self.last_name}'
 
     def __str__(self):
-        return self.email + self.first_name + self.last_name + self.phone_number
+        return self.email
 
     def get_role(self):
         user_role = None

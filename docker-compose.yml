@@ -2,7 +2,7 @@ version: '3.8'
 services:
   django:
     build: ./django_files
-    container_name: django
+    container_name: django_flipkart
     restart: always
     command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
 #    command: sh -c "python manage.py migrate --run-syncdb  && python manage.py runserver 0.0.0.0:8000"
@@ -28,4 +28,4 @@ services:
   redis:
     image: redis:7-alpine
     restart: always
-    container_name: redis
+    container_name: redis_flipkart

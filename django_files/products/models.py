@@ -18,7 +18,7 @@ class Products(models.Model):
     )
 
     title = models.CharField(max_length=500)
-    description = models.CharField(max_length=250)
+    description = models.CharField(max_length=2000)
     product_pic = models.ImageField(
         upload_to="product_image",
         validators=[FileExtensionValidator(allowed_extensions=["jpg", "png", "jpeg"])],
@@ -47,7 +47,7 @@ class Cart(models.Model):
     product_id = models.ForeignKey(Products, on_delete=models.CASCADE) # fk for specific product
     count = models.IntegerField(default=0)
     status = models.CharField(max_length=120,choices=choice, default='incart')
-    date = models.DateField(auto_now_add=True)
+    #date = models.DateField(auto_now_add=True)
     buyer = models.ForeignKey(MyUsers,on_delete=models.CASCADE)  # fk for pointing to the specific user
 
     def __str__(self):

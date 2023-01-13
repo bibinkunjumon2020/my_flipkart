@@ -20,8 +20,7 @@ class RegistrationView(View): # Customer SignUp
         Saving the form data in Database.
         """
         print("######### Form Enter")
-
-        form = RegistrationForm(request.POST)
+        form = RegistrationForm(request.POST,request.FILES)
         if form.is_valid():
             print("######### Form Valid")
             password = form.cleaned_data.get('password')

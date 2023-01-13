@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from products.models import Products
+from products.models import Products,Cart
 from products.forms import ProductsForm
 from django.urls import reverse_lazy
 from django.views.generic import View, ListView, DetailView, CreateView, TemplateView, UpdateView
@@ -70,3 +70,15 @@ def delete_product(request, *args, **kwargs):  # path : /delete/<int:id>
     """
     Products.objects.get(id=kwargs.get('pk')).delete()
     return redirect("product_list")
+
+class CartView(ListView):
+    template_name = "eventWebsite/cart.html"
+    model = Cart
+    context_object_name = "products"
+    def get_queryset(self):
+        """
+        this specific query is used to run this View
+        """
+        return Cart.objects.filter( buyer=self.request.user)
+
+
