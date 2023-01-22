@@ -15,18 +15,27 @@
                 {% if sell.profile_logo %}
                 <img src={{sell.profile_logo.url}} class="card-img-top" alt="..." style="width: 25rem;height:30rem">
                 {% endif %}
+                {% for info in seller_info %}
                 <div class="card-header">
                     <h5> Seller Name :</h5>
                 </div>
+
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item ps-5">{{sell.seller_name}}</li>
+                    <li class="list-group-item ps-5">{{info.seller_name}}</li>
                 </ul>
                 <div class="card-header">
                     <h5> Seller Registration ID :</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item ps-5">{{sell.seller_reg}}</li>
+                    <li class="list-group-item ps-5">{{info.seller_reg}}</li>
                 </ul>
+                  <div class="card-header">
+                    <h5> Founded :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{info.founded}}</li>
+                </ul>
+                {% endfor %}
                 <div class="card-header">
                     <h5> Email ID :</h5>
                 </div>
@@ -40,12 +49,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item ps-5">{{sell.phone_number}}</li>
                 </ul>
-                <div class="card-header">
-                    <h5> Founded :</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item ps-5">{{sell.founded}}</li>
-                </ul>
+
                 <div class="card-header">
                     <h5 align="center" style="background-color:rgb(255, 99, 71);">Address</h5>
                 </div>

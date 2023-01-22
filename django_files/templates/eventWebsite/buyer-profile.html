@@ -5,22 +5,45 @@
 
 
     <div class="container" style="padding:90px;">
-
+<div class="row">
+    <div class="col-4"></div>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <div class="card-body mt-5 mb-5">
+        <a href="{%url 'buyer_profile_update' user.id %}" class="card-link btn btn-danger">Edit Profile</a>
+                </div>
+    </div>
+</div>
         <div class="row">
             <div class="card ms-5 ">
                 {% for buy in buyer%}
-                <div class="card-header" >
+                <div class="card-header">
                     <h5 align="center" style="background-color:rgb(255, 99, 71);"> Buyer Basic Info</h5>
                 </div>
                 {% if buy.profile_logo %}
-               <img src={{buy.profile_logo.url}} class="card-img-top" style="width: 25rem;height:30rem" alt="..." >
+                <img src={{buy.profile_logo.url}} class="card-img-top" style="width: 25rem;height:30rem" alt="...">
                 {% endif %}
+                {% for info in buyer_info %}
                 <div class="card-header">
                     <h5> Name :</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item ps-5">{{buy.first_name}} {{buy.last_name}}</li>
+                    <li class="list-group-item ps-5">{{info.first_name}} {{info.last_name}}</li>
                 </ul>
+                <div class="card-header">
+                    <h5> Date Of Birth :</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{info.dob}}</li>
+                </ul>
+                <div class="card-header">
+                    <h5>Sex : </h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-5">{{info.sex}}</li>
+                </ul>
+                {% endfor %}
+
                 <div class="card-header">
                     <h5> Email ID :</h5>
                 </div>
@@ -32,18 +55,6 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item ps-5">{{buy.phone_number}}</li>
-                </ul>
-                <div class="card-header">
-                    <h5> Date Of Birth :</h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item ps-5">{{buy.dob}}</li>
-                </ul>
-                <div class="card-header">
-                    <h5>Sex : </h5>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item ps-5">{{buy.sex}}</li>
                 </ul>
 
                 <div class="card-header">

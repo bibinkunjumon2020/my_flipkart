@@ -1,0 +1,31 @@
+{% extends 'eventWebsite/base.html' %}
+
+{% block content %}
+
+{% load static %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6 border">
+            <h2>Add Product</h2>
+
+            <form method="post">
+                {% csrf_token %}
+                {{ wizard.form.as_p }}
+                {% if wizard.steps.prev %}
+                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.first }}">first</button>
+                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.prev }}">prev</button>
+                {% endif %}
+                <input type="submit" value="next">
+                {% if wizard.steps.next %}
+                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.next }}">next</button>
+                <button name="wizard_goto_step" type="submit" value="{{ wizard.steps.last }}">last</button>
+                {% endif %}
+            </form>
+
+        </div>
+        <div class="col-3">
+        </div>
+    </div>
+</div>
+{%endblock%}
